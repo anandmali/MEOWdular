@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">AisleDesign</string>
+    <string name="header_get_otp">Get OTP</string>
+    <string name="header_enter_number">Enter Your Phone Number</string>
+    <string name="btn_continue">Continue</string>
+    <string name="number_prefix">+91</string>
 </resources>
