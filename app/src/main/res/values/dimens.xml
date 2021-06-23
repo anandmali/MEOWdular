@@ -12,6 +12,7 @@
 
     <!-- dimensions for view -->
     <dimen name="header_1_width">220dp</dimen>
+    <dimen name="header_1_width_148">148dp</dimen>
     <dimen name="text_radius">8dp</dimen>
     <dimen name="text_padding_vertical">16dp</dimen>
     <dimen name="text_padding_horizontal">8dp</dimen>
@@ -24,4 +25,5 @@
     <dimen name="view_margin_top_20dp">20dp</dimen>
     <dimen name="btn_text_size">14sp</dimen>
     <dimen name="btn_radius">20dp</dimen>
+    <dimen name="timer_padding_vertical">12dp</dimen>
 </resources>

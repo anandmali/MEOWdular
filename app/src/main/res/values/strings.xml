@@ -4,4 +4,6 @@
     <string name="header_enter_number">Enter Your Phone Number</string>
     <string name="btn_continue">Continue</string>
     <string name="number_prefix">+91</string>
+    <string name="static_number">+91 9876543212</string>
+    <string name="header_enter_otp">Enter The OTP</string>
 </resources>
