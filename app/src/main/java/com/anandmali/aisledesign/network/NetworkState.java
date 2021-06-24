@@ -1,4 +1,4 @@
-package com.anandmali.aisledesign;
+package com.anandmali.aisledesign.network;
 
 public class NetworkState<T> {
 

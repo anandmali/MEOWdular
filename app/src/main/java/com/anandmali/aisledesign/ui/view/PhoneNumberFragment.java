@@ -1,4 +1,4 @@
-package com.anandmali.aisledesign;
+package com.anandmali.aisledesign.ui.view;
 
 import android.os.Bundle;
 import android.util.Log;
@@ -11,6 +11,8 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.anandmali.aisledesign.databinding.FragmentPhoneNumberBinding;
+import com.anandmali.aisledesign.network.NetworkState;
+import com.anandmali.aisledesign.ui.viewmodel.PhoneNumberViewModel;
 
 import dagger.hilt.android.AndroidEntryPoint;
 

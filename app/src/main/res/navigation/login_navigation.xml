@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/phoneNumberFragment"
-        android:name="com.anandmali.aisledesign.PhoneNumberFragment"
+        android:name="com.anandmali.aisledesign.ui.view.PhoneNumberFragment"
         android:label="PhoneNumberFragment"
         tools:layout="@layout/fragment_phone_number">
         <action
@@ -16,7 +16,7 @@
     </fragment>
     <fragment
         android:id="@+id/otpFragment"
-        android:name="com.anandmali.aisledesign.OtpFragment"
+        android:name="com.anandmali.aisledesign.ui.view.OtpFragment"
         android:label="OtpFragment"
         tools:layout="@layout/fragment_otp" />
 </navigation>

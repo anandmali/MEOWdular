@@ -1,10 +1,13 @@
-package com.anandmali.aisledesign;
+package com.anandmali.aisledesign.ui.viewmodel;
 
 import android.util.Patterns;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
+
+import com.anandmali.aisledesign.network.NetworkState;
+import com.anandmali.aisledesign.network.StateLiveDate;
 
 import javax.inject.Inject;
 

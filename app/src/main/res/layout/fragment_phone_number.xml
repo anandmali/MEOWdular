@@ -7,7 +7,7 @@
 
         <variable
             name="viewModel"
-            type="com.anandmali.aisledesign.PhoneNumberViewModel" />
+            type="com.anandmali.aisledesign.ui.viewmodel.PhoneNumberViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout xmlns:app="http://schemas.android.com/apk/res-auto"

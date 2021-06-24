@@ -1,8 +1,10 @@
-package com.anandmali.aisledesign;
+package com.anandmali.aisledesign.ui.view;
 
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.anandmali.aisledesign.R;
 
 import dagger.hilt.android.AndroidEntryPoint;
 
