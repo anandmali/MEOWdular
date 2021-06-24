@@ -5,12 +5,12 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
-import androidx.navigation.fragment.NavHostFragment;
+
+import com.anandmali.aisledesign.databinding.FragmentPhoneNumberBinding;
 
 import dagger.hilt.android.AndroidEntryPoint;
 
@@ -19,21 +19,34 @@ public class PhoneNumberFragment extends Fragment {
 
     PhoneNumberViewModel viewModel;
 
+    private FragmentPhoneNumberBinding binding;
+
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_phone_number, container, false);
+        binding = FragmentPhoneNumberBinding.inflate(inflater, container, false);
+        return binding.getRoot();
     }
 
     @Override
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
+        binding.setLifecycleOwner(this);
         viewModel = new ViewModelProvider(this).get(PhoneNumberViewModel.class);
+        binding.setViewModel(viewModel);
 
-        Log.e("Some value printed", viewModel.getSommeValue());
+        viewModel.getStatus().observe(getViewLifecycleOwner(), this::observeStatus);
+    }
 
-        Button button = view.findViewById(R.id.btn_continue);
-        button.setOnClickListener(v -> NavHostFragment.findNavController(this).navigate(R.id.action_phoneNumberFragment_to_otpFragment));
-
+    private void observeStatus(NetworkState<Boolean> networkState) {
+        switch (networkState.getStatus()) {
+            case SUCCESS:
+                Log.e("Success", networkState.getResponse().toString());
+                break;
+            case ERROR:
+                Log.e("Error", networkState.getErrorMessage());
+                break;
+            default:
+                break;
+        }
     }
 }
