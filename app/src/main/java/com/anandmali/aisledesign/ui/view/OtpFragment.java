@@ -1,5 +1,6 @@
 package com.anandmali.aisledesign.ui.view;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -82,6 +83,10 @@ public class OtpFragment extends Fragment {
     private void navigateToOtpScreen(String token) {
         sessionManager.saveToken(token);
         sessionManager.getToken();
+
+        Intent intent = new Intent(getActivity(), NotesActivity.class);
+        startActivity(intent);
+        getActivity().finish();
     }
 
 }

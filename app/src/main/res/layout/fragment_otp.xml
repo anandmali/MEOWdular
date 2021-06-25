@@ -68,6 +68,8 @@
                 android:ems="4"
                 android:focusable="@{!model.submitted}"
                 android:fontFamily="@font/inter_bold"
+                android:inputType="number"
+                android:maxLength="4"
                 android:paddingStart="@dimen/text_padding_vertical"
                 android:paddingTop="@dimen/text_padding_horizontal"
                 android:paddingEnd="@dimen/text_padding_vertical"
@@ -110,6 +112,15 @@
             app:layout_constraintStart_toEndOf="@id/btn_continue"
             app:layout_constraintTop_toTopOf="@id/btn_continue"
             tools:text="00:59" />
+
+        <ProgressBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="@{model.isLoading? View.VISIBLE : View.GONE}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

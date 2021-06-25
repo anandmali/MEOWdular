@@ -1,5 +1,9 @@
 package com.anandmali.aisledesign.ui.viewmodel;
 
+import android.annotation.SuppressLint;
+import android.os.CountDownTimer;
+import android.util.Log;
+
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.ViewModel;
 
@@ -21,9 +25,11 @@ import static android.text.TextUtils.isEmpty;
 @HiltViewModel
 public class OtpViewModel extends ViewModel {
 
+
     protected CompositeDisposable compositeDisposable = new CompositeDisposable();
     private final LoginRepository loginRepository;
-    private LoginBinding loginBinding;
+    private final LoginBinding loginBinding;
+    private CountDownTimer countDownTimer;
 
     private final StateLiveDate<String> otpStatus = new StateLiveDate<>();
 
@@ -35,6 +41,7 @@ public class OtpViewModel extends ViewModel {
     public OtpViewModel(LoginRepository loginRepository, LoginBinding loginBinding) {
         this.loginRepository = loginRepository;
         this.loginBinding = loginBinding;
+        startOtpTimer();
     }
 
     public void verifyOtp() {
@@ -80,4 +87,35 @@ public class OtpViewModel extends ViewModel {
         return otp.length() == 4 && otp.equalsIgnoreCase("1234");
     }
 
+    private void startOtpTimer() {
+        countDownTimer = new CountDownTimer(10000, 1000) {
+            @Override
+            public void onTick(long millisUntilFinished) {
+                long seconds = (millisUntilFinished / 1000);
+                @SuppressLint("DefaultLocale")
+                String formattedSeconds = String.format("%02d", seconds);
+                String remainingTime = "00:" + formattedSeconds;
+                Log.e("Timer => ", remainingTime);
+            }
+
+            @Override
+            public void onFinish() {
+                Log.e("", "");
+            }
+        };
+        countDownTimer.start();
+    }
+
+    @Override
+    protected void onCleared() {
+        super.onCleared();
+
+        if (compositeDisposable != null) {
+            compositeDisposable.clear();
+        }
+
+        if (countDownTimer != null) {
+            countDownTimer.cancel();
+        }
+    }
 }

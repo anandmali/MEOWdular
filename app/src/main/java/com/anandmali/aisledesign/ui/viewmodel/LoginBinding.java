@@ -16,6 +16,7 @@ public class LoginBinding extends BaseObservable {
     private boolean isLoading;
     private boolean isSubmitted;
     private String otp;
+    private String timer;
 
     @Inject
     public LoginBinding() {
