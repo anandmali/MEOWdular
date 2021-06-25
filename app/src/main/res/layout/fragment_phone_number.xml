@@ -6,6 +6,10 @@
         <import type="android.view.View" />
 
         <variable
+            name="model"
+            type="com.anandmali.aisledesign.ui.viewmodel.LoginBinding" />
+
+        <variable
             name="viewModel"
             type="com.anandmali.aisledesign.ui.viewmodel.PhoneNumberViewModel" />
     </data>
@@ -92,6 +96,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="7"
+                android:focusable="@{!model.submitted}"
                 android:fontFamily="@font/inter_bold"
                 android:inputType="number"
                 android:maxLength="10"
@@ -99,7 +104,7 @@
                 android:paddingTop="@dimen/text_padding_horizontal"
                 android:paddingEnd="@dimen/text_padding_vertical"
                 android:paddingBottom="@dimen/text_padding_horizontal"
-                android:text="@={viewModel.phoneNumber}"
+                android:text="@={model.phoneNumber}"
                 android:textColor="@color/black"
                 android:textSize="@dimen/input_text_size"
                 tools:text="9876543212" />
@@ -112,6 +117,7 @@
             android:layout_height="@dimen/btn_height"
             android:layout_marginTop="@dimen/view_margin_top_20dp"
             android:backgroundTint="@color/yellow"
+            android:enabled="@{!model.submitted}"
             android:fontFamily="@font/inter_bold"
             android:insetTop="0dp"
             android:insetBottom="0dp"
@@ -128,7 +134,7 @@
         <ProgressBar
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:visibility="@{viewModel.isLoading ? View.VISIBLE : View.GONE}"
+            android:visibility="@{model.isLoading? View.VISIBLE : View.GONE}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

@@ -2,6 +2,8 @@ package com.anandmali.aisledesign.network;
 
 import com.anandmali.aisledesign.network.data.LoginData;
 import com.anandmali.aisledesign.network.data.PhoneNumberData;
+import com.anandmali.aisledesign.network.data.TokenData;
+import com.anandmali.aisledesign.network.data.VerifyOtpData;
 
 import javax.inject.Inject;
 
@@ -17,8 +19,14 @@ public class LoginRepository {
         this.apiServices = apiServices;
     }
 
-    public Single<LoginData> doLogin(PhoneNumberData phoneNumberData) {
-        return apiServices.phoneNumberLogin(phoneNumberData);
+    public Single<Boolean> doLogin(PhoneNumberData phoneNumberData) {
+        return apiServices.phoneNumberLogin(phoneNumberData)
+                .map(LoginData::getStatus);
+    }
+
+    public Single<String> verifyOtp(VerifyOtpData verifyOtpData) {
+        return apiServices.verifyOtp(verifyOtpData)
+                .map(TokenData::getToken);
     }
 
 }

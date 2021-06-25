@@ -1,15 +1,11 @@
 package com.anandmali.aisledesign.ui.viewmodel;
 
-import android.util.Patterns;
-
 import androidx.lifecycle.LiveData;
-import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
 import com.anandmali.aisledesign.network.LoginRepository;
 import com.anandmali.aisledesign.network.NetworkState;
 import com.anandmali.aisledesign.network.StateLiveDate;
-import com.anandmali.aisledesign.network.data.LoginData;
 import com.anandmali.aisledesign.network.data.PhoneNumberData;
 
 import javax.inject.Inject;
@@ -26,54 +22,71 @@ import static android.text.TextUtils.isEmpty;
 public class PhoneNumberViewModel extends ViewModel {
 
     protected CompositeDisposable compositeDisposable = new CompositeDisposable();
-
     private final LoginRepository loginRepository;
-
-    public final MutableLiveData<String> phoneNumber = new MutableLiveData<>();
-    public final MutableLiveData<Boolean> isLoading = new MutableLiveData<>();
+    private final LoginBinding loginBinding;
 
     private final StateLiveDate<Boolean> numberStatus = new StateLiveDate<>();
-
     public LiveData<NetworkState<Boolean>> getStatus() {
         return numberStatus;
     }
 
     @Inject
-    public PhoneNumberViewModel(LoginRepository loginRepository) {
-        isLoading.postValue(false);
+    public PhoneNumberViewModel(LoginRepository loginRepository, LoginBinding loginBinding) {
         this.loginRepository = loginRepository;
+        this.loginBinding = loginBinding;
+        loginBinding.setLoading(false);
+    }
+
+    public LoginBinding getLoginBinding() {
+        return this.loginBinding;
     }
 
     public void getOtp() {
 
-        if (!isEmpty(phoneNumber.getValue()) && Patterns.PHONE.matcher(phoneNumber.getValue()).matches()) {
+        String number = loginBinding.getPhoneNumber();
 
-            isLoading.postValue(true);
-            PhoneNumberData phoneNumberData = new PhoneNumberData();
-            phoneNumberData.setNumber("+919876543212");
+        if (isEmpty(number)
+                || !isValidPhoneNumber(number)
+                || !isTestPhoneNumber(number)) {
+            numberStatus.postError("Invalid number");
+            return;
+        }
 
+        loginBinding.setLoading(true);
+        loginBinding.setSubmitted(true);
+        PhoneNumberData phoneNumberData = new PhoneNumberData();
+        phoneNumberData.setNumber("+91" + number);
 
-            Disposable disposable = loginRepository.doLogin(phoneNumberData)
-                    .subscribeOn(Schedulers.io())
-                    .observeOn(AndroidSchedulers.mainThread())
-                    .subscribe(this::handleSuccess, this::handleError);
+        Disposable disposable = loginRepository.doLogin(phoneNumberData)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(this::handleSuccess, this::handleError);
 
-            compositeDisposable.add(disposable);
+        compositeDisposable.add(disposable);
 
+    }
+
+    private void handleSuccess(boolean status) {
+        if (status) {
+            numberStatus.postSuccess(true);
         } else {
-            isLoading.postValue(false);
             numberStatus.postError("Wrong number");
         }
     }
 
-    private void handleSuccess(LoginData loginData) {
-        if (loginData.getStatus()) {
-            numberStatus.postSuccess(true);
-        }
+    private void handleError(Throwable throwable) {
+        numberStatus.postError(throwable.getMessage());
     }
 
-    private void handleError(Throwable throwable) {
-        numberStatus.postError("Wrong number");
+    private boolean isValidPhoneNumber(String mobile) {
+        String regEx = "^[6789]\\d{9}$";
+        return mobile.matches(regEx);
+    }
+
+    //This for testing purpose only
+    private boolean isTestPhoneNumber(String number) {
+        String testNumber = "9876543212";
+        return number.equalsIgnoreCase(testNumber);
     }
 
     @Override
@@ -84,4 +97,5 @@ public class PhoneNumberViewModel extends ViewModel {
             compositeDisposable.clear();
 
     }
+
 }

@@ -1,7 +1,11 @@
 package com.anandmali.aisledesign.di;
 
+import android.content.Context;
+import android.content.SharedPreferences;
+
 import com.anandmali.aisledesign.BuildConfig;
 import com.anandmali.aisledesign.network.ApiServices;
+import com.anandmali.aisledesign.network.SessionManager;
 import com.itkacher.okhttpprofiler.OkHttpProfilerInterceptor;
 
 import javax.inject.Singleton;
@@ -9,6 +13,7 @@ import javax.inject.Singleton;
 import dagger.Module;
 import dagger.Provides;
 import dagger.hilt.InstallIn;
+import dagger.hilt.android.qualifiers.ApplicationContext;
 import dagger.hilt.components.SingletonComponent;
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
@@ -18,7 +23,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 @Module
 @InstallIn(SingletonComponent.class)
-public class NetworkModule {
+public class AppModule {
 
     @Singleton
     @Provides
@@ -50,6 +55,19 @@ public class NetworkModule {
     @Provides
     public ApiServices provideApiService(Retrofit retrofit) {
         return retrofit.create(ApiServices.class);
+    }
+
+    @Singleton
+    @Provides
+    public SharedPreferences providePref(@ApplicationContext Context context) {
+        String prefName = BuildConfig.APPLICATION_ID;
+        return context.getSharedPreferences(prefName, Context.MODE_PRIVATE);
+    }
+
+    @Singleton
+    @Provides
+    public SessionManager provideSessionManager(SharedPreferences sharedPreferences) {
+        return new SessionManager(sharedPreferences);
     }
 
 }

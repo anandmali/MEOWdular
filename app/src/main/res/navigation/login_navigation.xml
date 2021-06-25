@@ -11,12 +11,17 @@
         android:label="PhoneNumberFragment"
         tools:layout="@layout/fragment_phone_number">
         <action
-            android:id="@+id/action_phoneNumberFragment_to_otpFragment"
+            android:id="@+id/startOtpFragment"
             app:destination="@id/otpFragment" />
     </fragment>
+
     <fragment
         android:id="@+id/otpFragment"
         android:name="com.anandmali.aisledesign.ui.view.OtpFragment"
         android:label="OtpFragment"
-        tools:layout="@layout/fragment_otp" />
+        tools:layout="@layout/fragment_otp">
+        <argument
+            android:name="phoneNumber"
+            app:argType="string" />
+    </fragment>
 </navigation>

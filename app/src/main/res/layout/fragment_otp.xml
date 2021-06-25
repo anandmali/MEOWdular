@@ -1,98 +1,115 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:layout_marginStart="@dimen/margin_vertical"
-    android:layout_marginTop="@dimen/margin_top"
-    android:layout_marginEnd="@dimen/margin_vertical"
-    android:layout_marginBottom="@dimen/margin_vertical">
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <TextView
-        android:id="@+id/tv_number"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:drawablePadding="8dp"
-        android:fontFamily="@font/inter_medium"
-        android:text="@string/static_number"
-        android:textColor="@color/black"
-        android:textSize="@dimen/header_2_size"
-        app:drawableEndCompat="@drawable/some_edit"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <data>
 
-    <TextView
-        android:id="@+id/tv_mobile_number"
-        android:layout_width="@dimen/header_1_width_148"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/view_margin_top_8dp"
-        android:fontFamily="@font/inter_extra_bold"
-        android:text="@string/header_enter_otp"
-        android:textColor="@color/black"
-        android:textSize="@dimen/header_1_size"
-        app:layout_constraintStart_toStartOf="@+id/tv_number"
-        app:layout_constraintTop_toBottomOf="@+id/tv_number" />
+        <import type="android.view.View" />
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/layout_prefix"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/view_margin_top_12dp"
-        app:boxCornerRadiusBottomEnd="@dimen/text_radius"
-        app:boxCornerRadiusBottomStart="@dimen/text_radius"
-        app:boxCornerRadiusTopEnd="@dimen/text_radius"
-        app:boxCornerRadiusTopStart="@dimen/text_radius"
-        app:boxStrokeColor="@color/gray"
-        app:layout_constraintStart_toStartOf="@id/tv_mobile_number"
-        app:layout_constraintTop_toBottomOf="@id/tv_mobile_number">
+        <variable
+            name="model"
+            type="com.anandmali.aisledesign.ui.viewmodel.LoginBinding" />
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:layout_width="match_parent"
+        <variable
+            name="viewModel"
+            type="com.anandmali.aisledesign.ui.viewmodel.OtpViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginStart="@dimen/margin_vertical"
+        android:layout_marginTop="@dimen/margin_top"
+        android:layout_marginEnd="@dimen/margin_vertical"
+        android:layout_marginBottom="@dimen/margin_vertical">
+
+        <TextView
+            android:id="@+id/tv_number"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:ems="4"
-            android:focusable="false"
-            android:fontFamily="@font/inter_bold"
-            android:paddingStart="@dimen/text_padding_vertical"
-            android:paddingTop="@dimen/text_padding_horizontal"
-            android:paddingEnd="@dimen/text_padding_vertical"
-            android:paddingBottom="@dimen/text_padding_horizontal"
+            android:drawablePadding="8dp"
+            android:fontFamily="@font/inter_medium"
+            android:text="@{model.phoneNumber}"
             android:textColor="@color/black"
-            android:textSize="@dimen/input_text_size"
-            tools:text="9999" />
+            android:textSize="@dimen/header_2_size"
+            app:drawableEndCompat="@drawable/some_edit"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    </com.google.android.material.textfield.TextInputLayout>
+        <TextView
+            android:id="@+id/tv_mobile_number"
+            android:layout_width="@dimen/header_1_width_148"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/view_margin_top_8dp"
+            android:fontFamily="@font/inter_extra_bold"
+            android:text="@string/header_enter_otp"
+            android:textColor="@color/black"
+            android:textSize="@dimen/header_1_size"
+            app:layout_constraintStart_toStartOf="@+id/tv_number"
+            app:layout_constraintTop_toBottomOf="@+id/tv_number" />
 
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/btn_continue"
-        android:layout_width="wrap_content"
-        android:layout_height="@dimen/btn_height"
-        android:layout_marginTop="@dimen/view_margin_top_20dp"
-        android:backgroundTint="@color/yellow"
-        android:fontFamily="@font/inter_bold"
-        android:insetTop="0dp"
-        android:insetBottom="0dp"
-        android:letterSpacing="0"
-        android:text="@string/btn_continue"
-        android:textAllCaps="false"
-        android:textColor="@color/black"
-        android:textSize="@dimen/btn_text_size"
-        app:cornerRadius="@dimen/btn_radius"
-        app:layout_constraintStart_toStartOf="@id/layout_prefix"
-        app:layout_constraintTop_toBottomOf="@id/layout_prefix" />
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/layout_prefix"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/view_margin_top_12dp"
+            app:boxCornerRadiusBottomEnd="@dimen/text_radius"
+            app:boxCornerRadiusBottomStart="@dimen/text_radius"
+            app:boxCornerRadiusTopEnd="@dimen/text_radius"
+            app:boxCornerRadiusTopStart="@dimen/text_radius"
+            app:boxStrokeColor="@color/gray"
+            app:layout_constraintStart_toStartOf="@id/tv_mobile_number"
+            app:layout_constraintTop_toBottomOf="@id/tv_mobile_number">
 
-    <TextView
-        android:id="@+id/tv_counter"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/timer_padding_vertical"
-        android:fontFamily="@font/inter_bold"
-        android:textColor="@color/black"
-        android:textSize="@dimen/btn_text_size"
-        app:layout_constraintBottom_toBottomOf="@id/btn_continue"
-        app:layout_constraintStart_toEndOf="@id/btn_continue"
-        app:layout_constraintTop_toTopOf="@id/btn_continue"
-        tools:text="00:59" />
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="4"
+                android:focusable="@{!model.submitted}"
+                android:fontFamily="@font/inter_bold"
+                android:paddingStart="@dimen/text_padding_vertical"
+                android:paddingTop="@dimen/text_padding_horizontal"
+                android:paddingEnd="@dimen/text_padding_vertical"
+                android:text="@={model.otp}"
+                android:textColor="@color/black"
+                android:textSize="@dimen/input_text_size"
+                tools:text="9999" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_continue"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/btn_height"
+            android:layout_marginTop="@dimen/view_margin_top_20dp"
+            android:backgroundTint="@color/yellow"
+            android:enabled="@{!model.submitted}"
+            android:fontFamily="@font/inter_bold"
+            android:insetTop="0dp"
+            android:insetBottom="0dp"
+            android:letterSpacing="0"
+            android:onClick="@{() -> viewModel.verifyOtp()}"
+            android:text="@string/btn_continue"
+            android:textAllCaps="false"
+            android:textColor="@color/black"
+            android:textSize="@dimen/btn_text_size"
+            app:cornerRadius="@dimen/btn_radius"
+            app:layout_constraintStart_toStartOf="@id/layout_prefix"
+            app:layout_constraintTop_toBottomOf="@id/layout_prefix" />
+
+        <TextView
+            android:id="@+id/tv_counter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/timer_padding_vertical"
+            android:fontFamily="@font/inter_bold"
+            android:textColor="@color/black"
+            android:textSize="@dimen/btn_text_size"
+            app:layout_constraintBottom_toBottomOf="@id/btn_continue"
+            app:layout_constraintStart_toEndOf="@id/btn_continue"
+            app:layout_constraintTop_toTopOf="@id/btn_continue"
+            tools:text="00:59" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
