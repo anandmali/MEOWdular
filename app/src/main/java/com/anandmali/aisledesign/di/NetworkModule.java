@@ -1,0 +1,55 @@
+package com.anandmali.aisledesign.di;
+
+import com.anandmali.aisledesign.BuildConfig;
+import com.anandmali.aisledesign.network.ApiServices;
+import com.itkacher.okhttpprofiler.OkHttpProfilerInterceptor;
+
+import javax.inject.Singleton;
+
+import dagger.Module;
+import dagger.Provides;
+import dagger.hilt.InstallIn;
+import dagger.hilt.components.SingletonComponent;
+import okhttp3.OkHttpClient;
+import okhttp3.logging.HttpLoggingInterceptor;
+import retrofit2.Retrofit;
+import retrofit2.adapter.rxjava3.RxJava3CallAdapterFactory;
+import retrofit2.converter.gson.GsonConverterFactory;
+
+@Module
+@InstallIn(SingletonComponent.class)
+public class NetworkModule {
+
+    @Singleton
+    @Provides
+    public OkHttpClient provideOkHttpClient() {
+        HttpLoggingInterceptor httpLoggingInterceptor = new HttpLoggingInterceptor();
+        httpLoggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
+        if (BuildConfig.DEBUG) {
+            return new OkHttpClient.Builder()
+                    .addInterceptor(httpLoggingInterceptor)
+                    .addInterceptor(new OkHttpProfilerInterceptor())
+                    .build();
+        } else {
+            return new OkHttpClient.Builder().build();
+        }
+    }
+
+    @Singleton
+    @Provides
+    public Retrofit provideRetrofit(OkHttpClient okHttpClient) {
+        String baseUrl = "https://testa2.aisle.co/V1/";
+        return new Retrofit.Builder()
+                .addConverterFactory(GsonConverterFactory.create())
+                .addCallAdapterFactory(RxJava3CallAdapterFactory.create())
+                .baseUrl(baseUrl)
+                .client(okHttpClient)
+                .build();
+    }
+
+    @Provides
+    public ApiServices provideApiService(Retrofit retrofit) {
+        return retrofit.create(ApiServices.class);
+    }
+
+}
