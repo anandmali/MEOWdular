@@ -10,4 +10,10 @@
         <item name="android:windowLightStatusBar">true</item>
         <!-- Customize your theme here. -->
     </style>
+
+    <style name="BottomNavigationViewTextFont">
+        <item name="fontFamily">@font/gilroy_medium</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:letterSpacing">0</item>
+    </style>
 </resources>
