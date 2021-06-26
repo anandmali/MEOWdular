@@ -1,4 +1,4 @@
-package com.anandmali.aisledesign.ui.view;
+package com.anandmali.aisledesign.ui.view.login;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -15,6 +15,7 @@ import com.anandmali.aisledesign.Utils;
 import com.anandmali.aisledesign.databinding.FragmentOtpBinding;
 import com.anandmali.aisledesign.network.NetworkState;
 import com.anandmali.aisledesign.network.SessionManager;
+import com.anandmali.aisledesign.ui.view.notes.NotesActivity;
 import com.anandmali.aisledesign.ui.viewmodel.LoginBinding;
 import com.anandmali.aisledesign.ui.viewmodel.OtpViewModel;
 import com.google.android.material.snackbar.Snackbar;

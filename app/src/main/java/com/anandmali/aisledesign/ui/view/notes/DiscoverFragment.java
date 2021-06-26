@@ -1,4 +1,4 @@
-package com.anandmali.aisledesign.ui.view.ui.home;
+package com.anandmali.aisledesign.ui.view.notes;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -13,23 +13,24 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.anandmali.aisledesign.databinding.FragmentDiscoverBinding;
+import com.anandmali.aisledesign.ui.viewmodel.DiscoverViewModel;
 
 
 public class DiscoverFragment extends Fragment {
 
-    private HomeViewModel homeViewModel;
+    private DiscoverViewModel discoverViewModel;
     private FragmentDiscoverBinding binding;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        homeViewModel =
-                new ViewModelProvider(this).get(HomeViewModel.class);
+        discoverViewModel =
+                new ViewModelProvider(this).get(DiscoverViewModel.class);
 
         binding = FragmentDiscoverBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
         final TextView textView = binding.textHome;
-        homeViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
+        discoverViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
             public void onChanged(@Nullable String s) {
                 textView.setText(s);

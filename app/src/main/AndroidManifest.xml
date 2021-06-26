@@ -12,10 +12,10 @@
         android:theme="@style/Theme.AisleDesign">
 
         <activity
-            android:name=".ui.view.LoginActivity"
+            android:name=".ui.view.login.LoginActivity"
             android:label="@string/title_activity_notes" />
 
-        <activity android:name=".ui.view.NotesActivity">
+        <activity android:name=".ui.view.notes.NotesActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

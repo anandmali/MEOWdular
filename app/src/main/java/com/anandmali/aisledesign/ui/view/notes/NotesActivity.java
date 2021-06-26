@@ -1,4 +1,4 @@
-package com.anandmali.aisledesign.ui.view;
+package com.anandmali.aisledesign.ui.view.notes;
 
 import android.os.Bundle;
 

@@ -1,4 +1,4 @@
-package com.anandmali.aisledesign.ui.view;
+package com.anandmali.aisledesign.ui.view.login;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
