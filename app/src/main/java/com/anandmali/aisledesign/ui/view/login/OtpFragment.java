@@ -11,7 +11,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
-import com.anandmali.aisledesign.Utils;
+import com.anandmali.aisledesign.utils.Utils;
 import com.anandmali.aisledesign.databinding.FragmentOtpBinding;
 import com.anandmali.aisledesign.network.NetworkState;
 import com.anandmali.aisledesign.network.SessionManager;

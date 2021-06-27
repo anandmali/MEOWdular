@@ -18,17 +18,22 @@
     <dimen name="text_padding_vertical">16dp</dimen>
     <dimen name="text_padding_horizontal">8dp</dimen>
     <dimen name="btn_height">40dp</dimen>
+    <dimen name="upgrade_btn_height">40dp</dimen>
     <dimen name="view_margin_top_20dp">20dp</dimen>
     <dimen name="btn_radius">20dp</dimen>
+    <dimen name="upgrade_btn_radius">24dp</dimen>
+    <dimen name="upgrade_btn_margin">24dp</dimen>
     <dimen name="timer_padding_vertical">12dp</dimen>
     <dimen name="card_radius">16dp</dimen>
 
     <!-- dimensions for different text sizes in sp -->
     <dimen name="header_1_size">30sp</dimen>
+    <dimen name="header_3_size">22sp</dimen>
     <dimen name="header_2_size">18sp</dimen>
     <dimen name="input_text_size">18sp</dimen>
     <dimen name="label_text_size">16sp</dimen>
     <dimen name="btn_text_size">14sp</dimen>
+    <dimen name="notes_text_size">28sp</dimen>
 
     <!-- Notes screen dimensions -->
     <dimen name="horizontal_margin">16dp</dimen>

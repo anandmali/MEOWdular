@@ -1,4 +1,4 @@
-package com.anandmali.aisledesign;
+package com.anandmali.aisledesign.utils;
 
 import android.app.Activity;
 import android.content.Context;

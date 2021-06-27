@@ -18,4 +18,5 @@
     <string name="header_interested">Interested In You</string>
     <string name="header_upgrade">Premium members can view all their likes at once</string>
     <string name="btn_upgrade">Upgrade</string>
+    <string name="desc_likes_img">Likes profile image</string>
 </resources>

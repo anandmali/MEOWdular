@@ -33,7 +33,7 @@
                     android:fontFamily="@font/gilroy_bold"
                     android:text="@string/header_notes"
                     android:textColor="@color/black"
-                    android:textSize="@dimen/header_1_size"
+                    android:textSize="@dimen/notes_text_size"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -46,7 +46,7 @@
                     android:fontFamily="@font/gilroy_medium"
                     android:text="@string/header_message"
                     android:textColor="@color/black"
-                    android:textSize="@dimen/label_text_size"
+                    android:textSize="@dimen/input_text_size"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/tv_note" />
@@ -94,7 +94,7 @@
                             android:fontFamily="@font/gilroy_bold"
                             android:text="@{model.bannerName}"
                             android:textColor="@color/white"
-                            android:textSize="@dimen/header_1_size"
+                            android:textSize="@dimen/header_3_size"
                             app:layout_constraintBottom_toTopOf="@+id/tv_review"
                             app:layout_constraintStart_toStartOf="@id/tv_review"
                             tools:text="Name, 20" />
@@ -104,29 +104,31 @@
 
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/btn_upgrade"
-                    android:layout_width="wrap_content"
-                    android:layout_height="@dimen/btn_height"
-                    android:layout_marginTop="@dimen/horizontal_margin"
-                    android:backgroundTint="@color/yellow"
+                    android:layout_width="112dp"
+                    android:layout_height="@dimen/upgrade_btn_height"
+                    android:backgroundTint="@color/light_yellow"
                     android:fontFamily="@font/gilroy_bold"
+                    android:insetTop="0dp"
+                    android:insetBottom="0dp"
                     android:letterSpacing="0"
                     android:text="@string/btn_upgrade"
                     android:textAllCaps="false"
-                    android:textSize="@dimen/btn_text_size"
-                    app:cornerRadius="@dimen/btn_radius"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/label_text_size"
+                    app:cornerRadius="@dimen/upgrade_btn_radius"
                     app:layout_constraintBottom_toBottomOf="@id/tv_premium_label"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/card_banner" />
+                    app:layout_constraintEnd_toEndOf="parent" />
 
                 <TextView
                     android:id="@+id/tv_interested"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/horizontal_margin"
+                    android:layout_marginStart="@dimen/horizontal_margin"
+                    android:layout_marginTop="@dimen/view_margin_top_12dp"
                     android:fontFamily="@font/gilroy_bold"
                     android:text="@string/header_interested"
                     android:textColor="@color/black"
-                    android:textSize="@dimen/header_2_size"
+                    android:textSize="@dimen/header_3_size"
                     app:layout_constraintStart_toStartOf="@+id/card_banner"
                     app:layout_constraintTop_toBottomOf="@+id/card_banner" />
 
@@ -135,7 +137,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/view_margin_top_4dp"
-                    android:layout_marginEnd="@dimen/margin_top"
+                    android:layout_marginEnd="@dimen/upgrade_btn_margin"
                     android:fontFamily="@font/gilroy_bold"
                     android:text="@string/header_upgrade"
                     android:textColor="@color/light_gray"
@@ -148,12 +150,11 @@
                     android:id="@+id/rv_likes_profile"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="@+id/tv_premium_label"
-                    app:layout_constraintTop_toBottomOf="@+id/tv_premium_label" />
-
+                    android:layout_marginTop="@dimen/view_margin_top_12dp"
+                    android:layout_marginBottom="@dimen/view_margin_top_12dp"
+                    app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_premium_label"
+                    app:spanCount="2" />
             </androidx.constraintlayout.widget.ConstraintLayout>
         </ScrollView>
 

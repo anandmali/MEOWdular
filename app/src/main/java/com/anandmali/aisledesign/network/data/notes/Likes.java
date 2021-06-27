@@ -6,4 +6,7 @@ public class Likes {
 
     private List<LikesProfile> profiles;
 
+    public List<LikesProfile> getProfiles() {
+        return profiles;
+    }
 }
