@@ -11,4 +11,11 @@
     <string name="title_notes">Notes</string>
     <string name="title_matches">Matches</string>
     <string name="title_profile">Profile</string>
+    <string name="header_notes">Notes</string>
+    <string name="header_message">Personal message to you</string>
+    <string name="label_tap_review">Tap to review 50+ notes</string>
+    <string name="desc_banner_img">Banner image</string>
+    <string name="header_interested">Interested In You</string>
+    <string name="header_upgrade">Premium members can view all their likes at once</string>
+    <string name="btn_upgrade">Upgrade</string>
 </resources>

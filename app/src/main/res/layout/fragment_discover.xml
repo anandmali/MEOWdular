@@ -1,21 +1,166 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="model"
+            type="com.anandmali.aisledesign.ui.viewmodel.DiscoverBinding" />
+    </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:context=".ui.view.notes.DiscoverFragment">
+        android:layout_height="match_parent">
 
-        <TextView
-            android:id="@+id/text_home"
+        <ScrollView
             android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/vertical_margin"
+                android:layout_marginEnd="@dimen/horizontal_margin">
+
+                <TextView
+                    android:id="@+id/tv_note"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_vertical"
+                    android:fontFamily="@font/gilroy_bold"
+                    android:text="@string/header_notes"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/header_1_size"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/tv_message"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/view_margin_top_8dp"
+                    android:fontFamily="@font/gilroy_medium"
+                    android:text="@string/header_message"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/label_text_size"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_note" />
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/card_banner"
+                    android:layout_width="match_parent"
+                    android:layout_height="360dp"
+                    android:layout_marginTop="@dimen/horizontal_margin"
+                    app:cardCornerRadius="@dimen/card_radius"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_message">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:contentDescription="@string/desc_banner_img"
+                            android:cropToPadding="true"
+                            android:scaleType="centerCrop"
+                            android:src="@{model.bannerPhotoUrl}"
+                            tools:background="@drawable/ic_launcher_background" />
+
+                        <TextView
+                            android:id="@+id/tv_review"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/vertical_margin"
+                            android:layout_marginBottom="@dimen/horizontal_margin"
+                            android:fontFamily="@font/gilroy_medium"
+                            android:text="@string/label_tap_review"
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/label_text_size"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toStartOf="parent" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="@dimen/view_margin_top_8dp"
+                            android:fontFamily="@font/gilroy_bold"
+                            android:text="@{model.bannerName}"
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/header_1_size"
+                            app:layout_constraintBottom_toTopOf="@+id/tv_review"
+                            app:layout_constraintStart_toStartOf="@id/tv_review"
+                            tools:text="Name, 20" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btn_upgrade"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/btn_height"
+                    android:layout_marginTop="@dimen/horizontal_margin"
+                    android:backgroundTint="@color/yellow"
+                    android:fontFamily="@font/gilroy_bold"
+                    android:letterSpacing="0"
+                    android:text="@string/btn_upgrade"
+                    android:textAllCaps="false"
+                    android:textSize="@dimen/btn_text_size"
+                    app:cornerRadius="@dimen/btn_radius"
+                    app:layout_constraintBottom_toBottomOf="@id/tv_premium_label"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/card_banner" />
+
+                <TextView
+                    android:id="@+id/tv_interested"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/horizontal_margin"
+                    android:fontFamily="@font/gilroy_bold"
+                    android:text="@string/header_interested"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/header_2_size"
+                    app:layout_constraintStart_toStartOf="@+id/card_banner"
+                    app:layout_constraintTop_toBottomOf="@+id/card_banner" />
+
+                <TextView
+                    android:id="@+id/tv_premium_label"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/view_margin_top_4dp"
+                    android:layout_marginEnd="@dimen/margin_top"
+                    android:fontFamily="@font/gilroy_bold"
+                    android:text="@string/header_upgrade"
+                    android:textColor="@color/light_gray"
+                    android:textSize="@dimen/btn_text_size"
+                    app:layout_constraintEnd_toStartOf="@+id/btn_upgrade"
+                    app:layout_constraintStart_toStartOf="@+id/tv_interested"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_interested" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rv_likes_profile"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@+id/tv_premium_label"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_premium_label" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </ScrollView>
+
+        <ProgressBar
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
-            android:textAlignment="center"
-            android:textSize="20sp"
+            android:visibility="@{model.isLoading? View.VISIBLE : View.GONE}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

@@ -1,19 +1,68 @@
 package com.anandmali.aisledesign.ui.viewmodel;
 
+import android.util.Log;
+
 import androidx.lifecycle.LiveData;
-import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
+import com.anandmali.aisledesign.network.NetworkState;
+import com.anandmali.aisledesign.network.NotesRepository;
+import com.anandmali.aisledesign.network.StateLiveDate;
+import com.anandmali.aisledesign.network.data.notes.TestProfileListData;
+
+import javax.inject.Inject;
+
+import dagger.hilt.android.lifecycle.HiltViewModel;
+import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers;
+import io.reactivex.rxjava3.disposables.CompositeDisposable;
+import io.reactivex.rxjava3.disposables.Disposable;
+import io.reactivex.rxjava3.schedulers.Schedulers;
+
+@HiltViewModel
 public class DiscoverViewModel extends ViewModel {
 
-    private MutableLiveData<String> mText;
+    private final NotesRepository repository;
+    private DiscoverBinding discoverBinding;
+    protected CompositeDisposable compositeDisposable = new CompositeDisposable();
 
-    public DiscoverViewModel() {
-        mText = new MutableLiveData<>();
-        mText.setValue("This is home fragment");
+    private final StateLiveDate<TestProfileListData> profileListStatus = new StateLiveDate<>();
+
+    public LiveData<NetworkState<TestProfileListData>> getStatus() {
+        return profileListStatus;
     }
 
-    public LiveData<String> getText() {
-        return mText;
+    @Inject
+    public DiscoverViewModel(NotesRepository repository, DiscoverBinding discoverBinding) {
+        this.repository = repository;
+        this.discoverBinding = discoverBinding;
+        getTestProfileList();
+    }
+
+    private void getTestProfileList() {
+        discoverBinding.setLoading(true);
+        Disposable disposable = repository.getTestProfileList()
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(this::handleSuccess, this::handleError);
+
+        compositeDisposable.add(disposable);
+    }
+
+    private void handleSuccess(TestProfileListData profileListData) {
+        Log.e("Response => ", profileListData.toString());
+        profileListStatus.postSuccess(profileListData);
+    }
+
+    private void handleError(Throwable throwable) {
+        Log.e("Response => ", throwable.getMessage());
+    }
+
+    @Override
+    protected void onCleared() {
+        super.onCleared();
+
+        if (compositeDisposable != null) {
+            compositeDisposable.clear();
+        }
     }
 }

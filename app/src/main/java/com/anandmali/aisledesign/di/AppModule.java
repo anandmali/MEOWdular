@@ -5,6 +5,7 @@ import android.content.SharedPreferences;
 
 import com.anandmali.aisledesign.BuildConfig;
 import com.anandmali.aisledesign.network.ApiServices;
+import com.anandmali.aisledesign.network.CookieInterceptor;
 import com.anandmali.aisledesign.network.SessionManager;
 import com.itkacher.okhttpprofiler.OkHttpProfilerInterceptor;
 
@@ -32,11 +33,14 @@ public class AppModule {
         httpLoggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
         if (BuildConfig.DEBUG) {
             return new OkHttpClient.Builder()
+                    .addInterceptor(new CookieInterceptor())
                     .addInterceptor(httpLoggingInterceptor)
                     .addInterceptor(new OkHttpProfilerInterceptor())
                     .build();
         } else {
-            return new OkHttpClient.Builder().build();
+            return new OkHttpClient.Builder()
+                    .addInterceptor(new CookieInterceptor())
+                    .build();
         }
     }
 

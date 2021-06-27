@@ -11,16 +11,17 @@ import com.anandmali.aisledesign.R;
 import com.anandmali.aisledesign.databinding.ActivityNotesBinding;
 import com.google.android.material.badge.BadgeDrawable;
 
+import dagger.hilt.android.AndroidEntryPoint;
 
+
+@AndroidEntryPoint
 public class NotesActivity extends AppCompatActivity {
-
-    private ActivityNotesBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        binding = ActivityNotesBinding.inflate(getLayoutInflater());
+        ActivityNotesBinding binding = ActivityNotesBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_activity_notes);
