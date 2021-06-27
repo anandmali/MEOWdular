@@ -1,7 +1,5 @@
 package com.anandmali.aisledesign.ui.viewmodel;
 
-import android.util.Log;
-
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.ViewModel;
 
@@ -22,7 +20,7 @@ import io.reactivex.rxjava3.schedulers.Schedulers;
 public class DiscoverViewModel extends ViewModel {
 
     private final NotesRepository repository;
-    private DiscoverBinding discoverBinding;
+    private final DiscoverBinding discoverBinding;
     protected CompositeDisposable compositeDisposable = new CompositeDisposable();
 
     private final StateLiveDate<TestProfileListData> profileListStatus = new StateLiveDate<>();
@@ -49,12 +47,11 @@ public class DiscoverViewModel extends ViewModel {
     }
 
     private void handleSuccess(TestProfileListData profileListData) {
-        Log.e("Response => ", profileListData.toString());
         profileListStatus.postSuccess(profileListData);
     }
 
     private void handleError(Throwable throwable) {
-        Log.e("Response => ", throwable.getMessage());
+        profileListStatus.postError(throwable.getMessage());
     }
 
     @Override

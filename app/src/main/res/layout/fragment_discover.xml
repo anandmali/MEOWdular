@@ -17,7 +17,8 @@
 
         <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:scrollbars="none">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
@@ -151,7 +152,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/view_margin_top_12dp"
-                    android:layout_marginBottom="@dimen/view_margin_top_12dp"
+                    android:paddingBottom="@dimen/horizontal_margin"
+                    android:scrollbars="none"
                     app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
                     app:layout_constraintTop_toBottomOf="@+id/tv_premium_label"
                     app:spanCount="2" />

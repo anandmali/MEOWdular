@@ -22,7 +22,7 @@ public class BindingAdapters {
     public static void setBlurImageSrc(ImageView imageView, String remoteImageSource) {
         Glide.with(imageView.getContext())
                 .load(remoteImageSource)
-                .apply(RequestOptions.bitmapTransform(new BlurTransformation(3)))
+                .apply(RequestOptions.bitmapTransform(new BlurTransformation()))
                 .into(imageView);
     }
 

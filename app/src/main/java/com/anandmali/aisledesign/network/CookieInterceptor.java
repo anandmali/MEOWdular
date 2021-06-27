@@ -10,21 +10,29 @@ import okhttp3.Response;
 
 public class CookieInterceptor implements Interceptor {
 
+    private final String COOKIE = "__cfduid=df9b865983bd04a5de2cf5017994bbbc71618565720";
+
+    private final SessionManager sessionManager;
+
+    public CookieInterceptor(SessionManager sessionManager) {
+        this.sessionManager = sessionManager;
+    }
+
     @NonNull
     @Override
     public Response intercept(@NonNull Chain chain) throws IOException {
 
         Request request = chain.request();
         Request.Builder builder = request.newBuilder();
-
-        //TODO remove hard coded values for token, use shared pref
+        String token = sessionManager.getToken();
         if (request.header("authentication_required") != null) {
-            builder.addHeader("Authorization", "32c7794d2e6a1f7316ef35aa1eb34541");
-            builder.addHeader("Cookie", "__cfduid=df9b865983bd04a5de2cf5017994bbbc71618565720");
+            builder.addHeader("Authorization", token);
+            builder.addHeader("Cookie", COOKIE);
         }
 
         request = builder.build();
 
         return chain.proceed(request);
     }
+
 }

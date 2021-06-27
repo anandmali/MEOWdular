@@ -16,6 +16,7 @@ import com.anandmali.aisledesign.network.data.notes.LikesProfile;
 import com.anandmali.aisledesign.network.data.notes.TestProfileListData;
 import com.anandmali.aisledesign.ui.viewmodel.DiscoverBinding;
 import com.anandmali.aisledesign.ui.viewmodel.DiscoverViewModel;
+import com.anandmali.aisledesign.utils.GridSpacingItemDecoration;
 import com.google.android.material.snackbar.Snackbar;
 
 import java.util.List;
@@ -71,6 +72,7 @@ public class DiscoverFragment extends Fragment {
         discoverBinding.setViewBindings(response);
 
         binding.rvLikesProfile.setHasFixedSize(true);
+        binding.rvLikesProfile.addItemDecoration(new GridSpacingItemDecoration(2, 16, false));
         List<LikesProfile> list = response.getLikes().getProfiles();
         LikesProfileAdapter adapter = new LikesProfileAdapter(list);
         binding.rvLikesProfile.setAdapter(adapter);

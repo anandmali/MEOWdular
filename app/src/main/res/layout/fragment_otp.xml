@@ -34,7 +34,8 @@
             android:textSize="@dimen/header_2_size"
             app:drawableEndCompat="@drawable/some_edit"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="+91 9876543212" />
 
         <TextView
             android:id="@+id/tv_mobile_number"
@@ -106,6 +107,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/timer_padding_vertical"
             android:fontFamily="@font/inter_bold"
+            android:text="@{model.timer}"
             android:textColor="@color/black"
             android:textSize="@dimen/btn_text_size"
             app:layout_constraintBottom_toBottomOf="@id/btn_continue"

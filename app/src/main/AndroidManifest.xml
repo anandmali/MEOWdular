@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.anandmali.aisledesign">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:name=".AisleDesignApplication"
         android:allowBackup="true"
@@ -12,10 +14,10 @@
         android:theme="@style/Theme.AisleDesign">
 
         <activity
-            android:name=".ui.view.login.LoginActivity"
+            android:name=".ui.view.notes.NotesActivity"
             android:label="@string/title_activity_notes" />
 
-        <activity android:name=".ui.view.notes.NotesActivity">
+        <activity android:name=".ui.view.login.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

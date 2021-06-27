@@ -1,6 +1,5 @@
 package com.anandmali.aisledesign.ui.view.notes;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
@@ -29,13 +28,11 @@ public class LikesProfileAdapter extends RecyclerView.Adapter<LikesProfileViewHo
     @Override
     public LikesProfileViewHolder onCreateViewHolder(@NonNull @NotNull ViewGroup parent, int viewType) {
         ItemViewLikesProfileBinding binding = DataBindingUtil.inflate(LayoutInflater.from(parent.getContext()), R.layout.item_view_likes_profile, parent, false);
-        Log.e("create vh", "created");
         return new LikesProfileViewHolder(binding);
     }
 
     @Override
     public void onBindViewHolder(@NonNull @NotNull LikesProfileViewHolder holder, int position) {
-        Log.e("bind vh", "created");
         LikesProfile profile = likesProfileList.get(position);
         holder.bind(profile);
     }

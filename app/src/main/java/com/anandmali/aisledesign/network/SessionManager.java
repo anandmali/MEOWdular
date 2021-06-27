@@ -24,9 +24,6 @@ public class SessionManager {
     }
 
     public String getToken() {
-        String token = sharedPreferences.getString(PREF_TOKE, null);
-        Log.e("Token get => ", token);
-        return token;
+        return sharedPreferences.getString(PREF_TOKE, "default_token");
     }
-
 }

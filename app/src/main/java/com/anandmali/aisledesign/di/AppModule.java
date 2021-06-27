@@ -28,18 +28,18 @@ public class AppModule {
 
     @Singleton
     @Provides
-    public OkHttpClient provideOkHttpClient() {
+    public OkHttpClient provideOkHttpClient(SessionManager sessionManager) {
         HttpLoggingInterceptor httpLoggingInterceptor = new HttpLoggingInterceptor();
         httpLoggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
         if (BuildConfig.DEBUG) {
             return new OkHttpClient.Builder()
-                    .addInterceptor(new CookieInterceptor())
+                    .addInterceptor(new CookieInterceptor(sessionManager))
                     .addInterceptor(httpLoggingInterceptor)
                     .addInterceptor(new OkHttpProfilerInterceptor())
                     .build();
         } else {
             return new OkHttpClient.Builder()
-                    .addInterceptor(new CookieInterceptor())
+                    .addInterceptor(new CookieInterceptor(sessionManager))
                     .build();
         }
     }

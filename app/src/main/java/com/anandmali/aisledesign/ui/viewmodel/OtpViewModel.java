@@ -48,8 +48,7 @@ public class OtpViewModel extends ViewModel {
 
         String otp = loginBinding.getOtp();
 
-        if (isEmpty(otp)
-                || !isValidTestOtp(otp)) {
+        if (isEmpty(otp) || !isValidTestOtp(otp)) {
             otpStatus.postError("Invalid otp");
             return;
         }
@@ -59,7 +58,7 @@ public class OtpViewModel extends ViewModel {
 
         VerifyOtpData verifyOtpData = new VerifyOtpData();
         verifyOtpData.setNumber(loginBinding.getPhoneNumber().replaceAll(" ", ""));
-        verifyOtpData.setOtp(loginBinding.getOtp());
+        verifyOtpData.setOtp(otp);
 
         Disposable disposable = loginRepository.verifyOtp(verifyOtpData)
                 .subscribeOn(Schedulers.io())
@@ -88,19 +87,19 @@ public class OtpViewModel extends ViewModel {
     }
 
     private void startOtpTimer() {
-        countDownTimer = new CountDownTimer(10000, 1000) {
+        countDownTimer = new CountDownTimer(60000, 1000) {
             @Override
             public void onTick(long millisUntilFinished) {
                 long seconds = (millisUntilFinished / 1000);
                 @SuppressLint("DefaultLocale")
                 String formattedSeconds = String.format("%02d", seconds);
                 String remainingTime = "00:" + formattedSeconds;
-                Log.e("Timer => ", remainingTime);
+                loginBinding.setTimer(remainingTime);
             }
 
             @Override
             public void onFinish() {
-                Log.e("", "");
+                Log.i("Timer finish => ", "Finished");
             }
         };
         countDownTimer.start();

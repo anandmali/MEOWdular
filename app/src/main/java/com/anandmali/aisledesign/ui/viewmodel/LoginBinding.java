@@ -62,4 +62,14 @@ public class LoginBinding extends BaseObservable {
         this.otp = otp;
         notifyPropertyChanged(BR.otp);
     }
+
+    @Bindable
+    public String getTimer() {
+        return timer;
+    }
+
+    public void setTimer(String timer) {
+        this.timer = timer;
+        notifyPropertyChanged(BR.timer);
+    }
 }
