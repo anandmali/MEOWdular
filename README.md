@@ -25,3 +25,7 @@ Modularized code providing benefits of better [separation of concerns](https://e
 ### Test requirements
 * Phone number : `9876543212`
 * OTP : `1234`
+
+
+### Screens
+<img src="statics/phone_number_screen.png" height="300em"> <img src="statics/otp_screens.png" height="300em"> <img src="statics/notes_screen.png" height="300em">
