@@ -28,4 +28,4 @@ Modularized code providing benefits of better [separation of concerns](https://e
 
 
 ### Screens
-<img src="statics/phone_number_screen.png" height="300em"> <img src="statics/otp_screens.png" height="300em"> <img src="statics/notes_screen.png" height="300em">
+<img src="statics/phone_number_screen.png" height="300em"> <img src="statics/otp_screen.png" height="300em"> <img src="statics/notes_screen.png" height="300em">
