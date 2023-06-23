@@ -1,14 +1,26 @@
 package com.anandmali.aisledesign.network.data.notes;
 
+import java.util.List;
+
 public class TestProfileListData {
-    private Invites invites;
-    private Likes likes;
+    private CatProfiles catProfiles;
 
-    public Invites getInvites() {
-        return invites;
+    private List<CatProfiles> moreCats;
+
+    public CatProfiles getCatProfiles() {
+        return catProfiles;
     }
 
-    public Likes getLikes() {
-        return likes;
+    public void setCatProfiles(CatProfiles cat) {
+        this.catProfiles = cat;
     }
+
+    public List<CatProfiles> getMoreCats() {
+        return moreCats;
+    }
+
+    public void setMoreCats(List<CatProfiles> moreCats) {
+        this.moreCats = moreCats;
+    }
+
 }

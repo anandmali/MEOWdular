@@ -69,9 +69,9 @@ public class OtpViewModel extends ViewModel {
 
     }
 
-    private void handleSuccess(String status) {
-        if (!isEmpty(status)) {
-            otpStatus.postSuccess(status);
+    private void handleSuccess(String token) {
+        if (!isEmpty(token)) {
+            otpStatus.postSuccess(token);
         } else {
             otpStatus.postError("Wrong otp");
         }

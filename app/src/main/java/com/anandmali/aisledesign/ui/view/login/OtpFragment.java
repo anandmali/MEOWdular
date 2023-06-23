@@ -69,7 +69,7 @@ public class OtpFragment extends Fragment {
         loginBinding.setSubmitted(false);
         switch (networkState.getStatus()) {
             case SUCCESS:
-                navigateToOtpScreen(networkState.getResponse());
+                navigateDashboardScreen(networkState.getResponse());
                 break;
             case ERROR:
                 Snackbar.make(binding.getRoot(),
@@ -81,7 +81,7 @@ public class OtpFragment extends Fragment {
         }
     }
 
-    private void navigateToOtpScreen(String token) {
+    private void navigateDashboardScreen(String token) {
         sessionManager.saveToken(token);
         sessionManager.getToken();
 

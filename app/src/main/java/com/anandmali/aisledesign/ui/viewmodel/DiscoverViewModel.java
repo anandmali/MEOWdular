@@ -1,5 +1,7 @@
 package com.anandmali.aisledesign.ui.viewmodel;
 
+import android.util.Log;
+
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.ViewModel;
 
@@ -47,6 +49,10 @@ public class DiscoverViewModel extends ViewModel {
     }
 
     private void handleSuccess(TestProfileListData profileListData) {
+        Log.e("====> Success VM main cat", profileListData.getCatProfiles().getName());
+        Log.e("====> Success VM list size", profileListData.getMoreCats().size()+"");
+        Log.e("====> Success VM first list", profileListData.getMoreCats().get(0).getName()+"");
+
         profileListStatus.postSuccess(profileListData);
     }
 

@@ -12,7 +12,7 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.anandmali.aisledesign.databinding.FragmentDiscoverBinding;
 import com.anandmali.aisledesign.network.NetworkState;
-import com.anandmali.aisledesign.network.data.notes.LikesProfile;
+import com.anandmali.aisledesign.network.data.notes.CatProfiles;
 import com.anandmali.aisledesign.network.data.notes.TestProfileListData;
 import com.anandmali.aisledesign.ui.viewmodel.DiscoverBinding;
 import com.anandmali.aisledesign.ui.viewmodel.DiscoverViewModel;
@@ -73,7 +73,7 @@ public class DiscoverFragment extends Fragment {
 
         binding.rvLikesProfile.setHasFixedSize(true);
         binding.rvLikesProfile.addItemDecoration(new GridSpacingItemDecoration(2, 16, false));
-        List<LikesProfile> list = response.getLikes().getProfiles();
+        List<CatProfiles> list = response.getMoreCats();
         LikesProfileAdapter adapter = new LikesProfileAdapter(list);
         binding.rvLikesProfile.setAdapter(adapter);
         adapter.notifyDataSetChanged();

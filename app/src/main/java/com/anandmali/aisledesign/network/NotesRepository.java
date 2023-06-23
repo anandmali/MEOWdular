@@ -8,15 +8,15 @@ import io.reactivex.rxjava3.core.Single;
 
 public class NotesRepository {
 
-    private final ApiServices apiServices;
+    private final ApiServiceMock apiServiceMock;
 
     @Inject
-    public NotesRepository(ApiServices apiServices) {
-        this.apiServices = apiServices;
+    public NotesRepository(ApiServiceMock apiServiceMock) {
+        this.apiServiceMock = apiServiceMock;
     }
 
     public Single<TestProfileListData> getTestProfileList() {
-        return apiServices.testProfileList();
+        return apiServiceMock.testProfileList();
     }
 
 }
