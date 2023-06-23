@@ -6,7 +6,7 @@
 
         <variable
             name="model"
-            type="com.anandmali.aisledesign.network.data.notes.LikesProfile" />
+            type="com.anandmali.aisledesign.network.data.notes.CatProfiles" />
     </data>
 
     <androidx.cardview.widget.CardView xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -37,7 +37,7 @@
                 android:layout_marginBottom="16dp"
                 android:fontFamily="@font/gilroy_bold"
                 android:letterSpacing="0"
-                android:text="@{model.first_name}"
+                android:text="@{String.format(@string/formatted_name, model.name, model.age)}"
                 android:textColor="@color/white"
                 android:textSize="18sp"
                 app:layout_constraintBottom_toBottomOf="parent"

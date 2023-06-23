@@ -2,11 +2,11 @@ package com.anandmali.aisledesign.network.data.notes;
 
 import java.util.List;
 
-public class Invites{
+public class LikedCats {
 
-    private List<Profile> profiles;
+    private List<LikesProfile> profiles;
 
-    public List<Profile> getProfiles() {
+    public List<LikesProfile> getProfiles() {
         return profiles;
     }
 }

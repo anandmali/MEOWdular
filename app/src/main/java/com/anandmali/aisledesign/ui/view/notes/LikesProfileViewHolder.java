@@ -3,7 +3,7 @@ package com.anandmali.aisledesign.ui.view.notes;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.anandmali.aisledesign.databinding.ItemViewLikesProfileBinding;
-import com.anandmali.aisledesign.network.data.notes.LikesProfile;
+import com.anandmali.aisledesign.network.data.notes.CatProfiles;
 
 public class LikesProfileViewHolder extends RecyclerView.ViewHolder {
 
@@ -14,7 +14,7 @@ public class LikesProfileViewHolder extends RecyclerView.ViewHolder {
         this.binding = binding;
     }
 
-    public void bind(LikesProfile likesProfile) {
+    public void bind(CatProfiles likesProfile) {
         binding.setModel(likesProfile);
         binding.executePendingBindings();
     }

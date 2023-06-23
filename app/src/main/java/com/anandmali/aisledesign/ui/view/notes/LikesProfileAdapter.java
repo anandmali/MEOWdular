@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.anandmali.aisledesign.R;
 import com.anandmali.aisledesign.databinding.ItemViewLikesProfileBinding;
-import com.anandmali.aisledesign.network.data.notes.LikesProfile;
+import com.anandmali.aisledesign.network.data.notes.CatProfiles;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -17,9 +17,9 @@ import java.util.List;
 
 public class LikesProfileAdapter extends RecyclerView.Adapter<LikesProfileViewHolder> {
 
-    private final List<LikesProfile> likesProfileList;
+    private final List<CatProfiles> likesProfileList;
 
-    public LikesProfileAdapter(List<LikesProfile> hiddenProfileList) {
+    public LikesProfileAdapter(List<CatProfiles> hiddenProfileList) {
         this.likesProfileList = hiddenProfileList;
     }
 
@@ -33,7 +33,7 @@ public class LikesProfileAdapter extends RecyclerView.Adapter<LikesProfileViewHo
 
     @Override
     public void onBindViewHolder(@NonNull @NotNull LikesProfileViewHolder holder, int position) {
-        LikesProfile profile = likesProfileList.get(position);
+        CatProfiles profile = likesProfileList.get(position);
         holder.bind(profile);
     }
 

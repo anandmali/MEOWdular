@@ -12,20 +12,20 @@ import io.reactivex.rxjava3.core.Single;
 
 public class LoginRepository {
 
-    private final ApiServices apiServices;
+    private final ApiServiceMock apiServiceMock;
 
     @Inject
-    public LoginRepository(ApiServices apiServices) {
-        this.apiServices = apiServices;
+    public LoginRepository(ApiServiceMock apiServiceMock) {
+        this.apiServiceMock = apiServiceMock;
     }
 
     public Single<Boolean> doLogin(PhoneNumberData phoneNumberData) {
-        return apiServices.phoneNumberLogin(phoneNumberData)
+        return apiServiceMock.phoneNumberLogin(phoneNumberData)
                 .map(LoginData::getStatus);
     }
 
     public Single<String> verifyOtp(VerifyOtpData verifyOtpData) {
-        return apiServices.verifyOtp(verifyOtpData)
+        return apiServiceMock.verifyOtp(verifyOtpData)
                 .map(TokenData::getToken);
     }
 

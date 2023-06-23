@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 
 import com.anandmali.aisledesign.BuildConfig;
+import com.anandmali.aisledesign.network.ApiServiceMock;
 import com.anandmali.aisledesign.network.ApiServices;
 import com.anandmali.aisledesign.network.CookieInterceptor;
 import com.anandmali.aisledesign.network.SessionManager;
@@ -47,7 +48,7 @@ public class AppModule {
     @Singleton
     @Provides
     public Retrofit provideRetrofit(OkHttpClient okHttpClient) {
-        String baseUrl = "https://testa2.aisle.co/V1/";
+        String baseUrl = "https://cats.mock.co/V1/"; //Just a dummy URL to mock network setup.
         return new Retrofit.Builder()
                 .addConverterFactory(GsonConverterFactory.create())
                 .addCallAdapterFactory(RxJava3CallAdapterFactory.create())
@@ -59,6 +60,11 @@ public class AppModule {
     @Provides
     public ApiServices provideApiService(Retrofit retrofit) {
         return retrofit.create(ApiServices.class);
+    }
+
+    @Provides
+    public ApiServiceMock provideApiServiceMock() {
+        return new ApiServiceMock();
     }
 
     @Singleton

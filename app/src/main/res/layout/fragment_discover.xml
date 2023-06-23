@@ -32,7 +32,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/margin_vertical"
                     android:fontFamily="@font/gilroy_bold"
-                    android:text="@string/header_notes"
+                    android:text="@string/header_cat"
                     android:textColor="@color/black"
                     android:textSize="@dimen/notes_text_size"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -98,7 +98,7 @@
                             android:textSize="@dimen/header_3_size"
                             app:layout_constraintBottom_toTopOf="@+id/tv_review"
                             app:layout_constraintStart_toStartOf="@id/tv_review"
-                            tools:text="Name, 20" />
+                            tools:text="Name, 2" />
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
                 </com.google.android.material.card.MaterialCardView>
@@ -112,7 +112,7 @@
                     android:insetTop="0dp"
                     android:insetBottom="0dp"
                     android:letterSpacing="0"
-                    android:text="@string/btn_upgrade"
+                    android:text="@string/btn_subscribe"
                     android:textAllCaps="false"
                     android:textColor="@color/black"
                     android:textSize="@dimen/label_text_size"

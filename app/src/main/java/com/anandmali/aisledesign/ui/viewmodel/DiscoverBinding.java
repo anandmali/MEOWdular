@@ -1,5 +1,7 @@
 package com.anandmali.aisledesign.ui.viewmodel;
 
+import android.util.Log;
+
 import androidx.databinding.BaseObservable;
 import androidx.databinding.Bindable;
 
@@ -52,12 +54,13 @@ public class DiscoverBinding extends BaseObservable {
     }
 
     public void setViewBindings(TestProfileListData profileListData) {
-        String firstName = profileListData.getInvites().getProfiles().get(0).getGeneralInformation().getFirstName();
-        int age = profileListData.getInvites().getProfiles().get(0).getGeneralInformation().getAge();
+        Log.e("====> main bind", profileListData.getCatProfiles().getName());
+        String firstName = profileListData.getCatProfiles().getName();
+        int age = profileListData.getCatProfiles().getAge();
         String name = firstName + ", " + age;
         setBannerName(name);
 
-        String url = profileListData.getInvites().getProfiles().get(0).getPhotos().get(0).getPhoto();
+        String url = profileListData.getCatProfiles().getAvatar();
         setBannerPhotoUrl(url);
     }
 

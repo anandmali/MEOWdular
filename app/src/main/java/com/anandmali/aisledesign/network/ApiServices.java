@@ -11,7 +11,7 @@ import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.Headers;
 import retrofit2.http.POST;
-
+//A mock API services just to mock network setup.
 public interface ApiServices {
 
     @POST("users/phone_number_login")
@@ -21,7 +21,7 @@ public interface ApiServices {
     Single<TokenData> verifyOtp(@Body VerifyOtpData verifyOtpData);
 
     @Headers("authentication_required: true")
-    @GET("users/test_profile_list")
+    @GET("users/cat_profile")
     Single<TestProfileListData> testProfileList();
 
 }
