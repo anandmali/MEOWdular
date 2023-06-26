@@ -7,11 +7,11 @@
 
         <variable
             name="model"
-            type="com.anandmali.aisledesign.ui.viewmodel.LoginBinding" />
+            type="com.anandmali.meowdular.ui.viewmodel.LoginBinding" />
 
         <variable
             name="viewModel"
-            type="com.anandmali.aisledesign.ui.viewmodel.OtpViewModel" />
+            type="com.anandmali.meowdular.ui.viewmodel.OtpViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout xmlns:app="http://schemas.android.com/apk/res-auto"

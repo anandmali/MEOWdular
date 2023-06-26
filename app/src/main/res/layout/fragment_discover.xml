@@ -8,7 +8,7 @@
 
         <variable
             name="model"
-            type="com.anandmali.aisledesign.ui.viewmodel.DiscoverBinding" />
+            type="com.anandmali.meowdular.ui.viewmodel.DiscoverBinding" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout xmlns:app="http://schemas.android.com/apk/res-auto"
